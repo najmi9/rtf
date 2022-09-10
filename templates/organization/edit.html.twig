@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ edit ? 'Edit' : 'New' }} Organization{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                {{ edit ? 'Edit' : 'New' }} Organization
+            </h3>
+            <div class="card-toolbar">
+
+            </div>
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <button class="btn btn-sm btn-primary" type="submit">
+                    {{ edit ? 'Edit' : 'New' }} Organization
+                </button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

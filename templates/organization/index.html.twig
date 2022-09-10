@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organization List{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Organization List
+            </h3>
+            <div class="card-toolbar">
+                <a href="{{ path('app_organizations_new') }}" class="btn btn-sm btn-primary">
+                    <i class="fas fa-plus"></i>
+                    New Organization
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        {% for organization in organizations %}
+                            <tr>
+                                <td> {{ organization.name }} </td>
+                                <td> {{ organization.description }} </td>
+                                <td class="text-center">
+                                    <a href="{{ path('app_organizations_delete', {name: organization.name}) }}"
+                                        class="btn btn-sm btn-danger" title="Delete Organization"
+                                        onclick="return window.confirm('Are you sure you want to delete this?')"
+                                    >
+                                       <i class="fas fa-trash"></i>
+                                        Delete
+                                    </a>
+                                    <br/>
+                                    <a href="{{ path('app_organizations_edit', {name: organization.name}) }}"
+                                        class="btn btn-sm btn-warning" title="Edit Organization"
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td class="text-center" colspan="2">
+                                    No organization found.
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
